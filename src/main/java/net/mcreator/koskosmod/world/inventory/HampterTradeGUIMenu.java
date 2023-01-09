@@ -4,6 +4,9 @@ package net.mcreator.koskosmod.world.inventory;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -18,12 +21,16 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
+import net.mcreator.koskosmod.procedures.OnHampterTradeSlot0ChangedProcedure;
+import net.mcreator.koskosmod.network.HampterTradeGUISlotMessage;
 import net.mcreator.koskosmod.init.KoskosModModMenus;
+import net.mcreator.koskosmod.KoskosModMod;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 
+@Mod.EventBusSubscriber
 public class HampterTradeGUIMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
 	public final static HashMap<String, Object> guistate = new HashMap<>();
 	public final Level world;
@@ -75,9 +82,20 @@ public class HampterTradeGUIMenu extends AbstractContainerMenu implements Suppli
 				}
 			}
 		}
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 25, 53) {
+		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 43, 44) {
+			@Override
+			public void setChanged() {
+				super.setChanged();
+				slotChanged(0, 0, 0);
+			}
 		}));
-		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 133, 53) {
+		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 115, 44) {
+			@Override
+			public void onTake(Player entity, ItemStack stack) {
+				super.onTake(entity, stack);
+				slotChanged(1, 1, 0);
+			}
+
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return false;
@@ -219,7 +237,26 @@ public class HampterTradeGUIMenu extends AbstractContainerMenu implements Suppli
 		}
 	}
 
+	private void slotChanged(int slotid, int ctype, int meta) {
+		if (this.world != null && this.world.isClientSide()) {
+			KoskosModMod.PACKET_HANDLER.sendToServer(new HampterTradeGUISlotMessage(slotid, x, y, z, ctype, meta));
+			HampterTradeGUISlotMessage.handleSlotAction(entity, slotid, ctype, meta, x, y, z);
+		}
+	}
+
 	public Map<Integer, Slot> get() {
 		return customSlots;
+	}
+
+	@SubscribeEvent
+	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+		Player entity = event.player;
+		if (event.phase == TickEvent.Phase.END && entity.containerMenu instanceof HampterTradeGUIMenu) {
+			Level world = entity.level;
+			double x = entity.getX();
+			double y = entity.getY();
+			double z = entity.getZ();
+			OnHampterTradeSlot0ChangedProcedure.execute(world, entity);
+		}
 	}
 }

@@ -7,12 +7,9 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.koskosmod.world.inventory.HampterTradeGUIMenu;
-import net.mcreator.koskosmod.network.HampterTradeGUIButtonMessage;
-import net.mcreator.koskosmod.KoskosModMod;
 
 import java.util.HashMap;
 
@@ -34,11 +31,6 @@ public class HampterTradeGUIScreen extends AbstractContainerScreen<HampterTradeG
 		this.entity = container.entity;
 		this.imageWidth = 176;
 		this.imageHeight = 166;
-	}
-
-	@Override
-	public boolean isPauseScreen() {
-		return true;
 	}
 
 	private static final ResourceLocation texture = new ResourceLocation("koskos_mod:textures/screens/hampter_trade_gui.png");
@@ -89,11 +81,5 @@ public class HampterTradeGUIScreen extends AbstractContainerScreen<HampterTradeG
 	public void init() {
 		super.init();
 		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-		this.addRenderableWidget(new Button(this.leftPos + 60, this.topPos + 52, 56, 20, Component.literal("Trade!"), e -> {
-			if (true) {
-				KoskosModMod.PACKET_HANDLER.sendToServer(new HampterTradeGUIButtonMessage(0, x, y, z));
-				HampterTradeGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
-			}
-		}));
 	}
 }

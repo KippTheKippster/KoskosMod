@@ -8,7 +8,7 @@
     "inventoryOffsetX": 0,
     "inventoryOffsetY": 0,
     "renderBgLayer": true,
-    "doesPauseGame": true,
+    "doesPauseGame": false,
     "components": [
       {
         "type": "label",
@@ -24,20 +24,6 @@
         }
       },
       {
-        "type": "button",
-        "data": {
-          "text": "Trade!",
-          "onClick": {
-            "name": "HampterTradeLogic"
-          },
-          "width": 56,
-          "height": 20,
-          "name": "Trade!",
-          "x": 186,
-          "y": 89
-        }
-      },
-      {
         "type": "inputslot",
         "data": {
           "inputLimit": {
@@ -46,9 +32,12 @@
           "id": 0,
           "disableStackInteraction": false,
           "dropItemsWhenNotBound": true,
+          "onSlotChanged": {
+            "name": "OnHampterTradeSlot0Changed"
+          },
           "name": "Slot #0",
-          "x": 150,
-          "y": 89
+          "x": 168,
+          "y": 80
         }
       },
       {
@@ -57,12 +46,18 @@
           "id": 1,
           "disableStackInteraction": false,
           "dropItemsWhenNotBound": true,
+          "onTakenFromSlot": {
+            "name": "OnHampterTradeSlot1Pickup"
+          },
           "name": "Slot #1",
-          "x": 258,
-          "y": 89
+          "x": 240,
+          "y": 80
         }
       }
     ],
+    "onTick": {
+      "name": "OnHampterTradeSlot0Changed"
+    },
     "gridSettings": {
       "sx": 18,
       "sy": 18,
