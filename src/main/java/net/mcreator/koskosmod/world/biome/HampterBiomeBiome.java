@@ -33,15 +33,15 @@ import java.util.List;
 
 public class HampterBiomeBiome {
 	public static final Climate.ParameterPoint PARAMETER_POINT = new Climate.ParameterPoint(Climate.Parameter.span(-0.8f, 0.8f),
-			Climate.Parameter.span(-0.8f, 0.8f), Climate.Parameter.span(-0.24f, 1.36f), Climate.Parameter.span(-0.8f, 0.8f),
+			Climate.Parameter.span(-0.8f, 0.8f), Climate.Parameter.span(-0.2f, 1.4f), Climate.Parameter.span(-1.8f, -0.2f),
 			Climate.Parameter.point(0), Climate.Parameter.span(-0.774769317626f, 0.825230682374f), 0);
 	public static final Climate.ParameterPoint PARAMETER_POINT_UNDERGROUND = new Climate.ParameterPoint(Climate.Parameter.span(-1, 1),
 			Climate.Parameter.span(-1, 1), Climate.Parameter.span(-2f, 2f), Climate.Parameter.span(-2f, 2f), Climate.Parameter.span(0.2f, 0.9f),
 			Climate.Parameter.span(-2f, 2f), 0);
 
 	public static Biome createBiome() {
-		BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-				.foliageColorOverride(10387789).grassColorOverride(9470285).build();
+		BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-13057).waterFogColor(329011).skyColor(7972607)
+				.foliageColorOverride(-3355393).grassColorOverride(-3355393).build();
 		BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder();
 		biomeGenerationSettings.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, PlacementUtils.register("koskos_mod:tree_hampter_biome",
 				FeatureUtils.register("koskos_mod:tree_hampter_biome", Feature.TREE,
@@ -60,7 +60,7 @@ public class HampterBiomeBiome {
 						RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome())));
 		BiomeDefaultFeatures.addSurfaceFreezing(biomeGenerationSettings);
 		MobSpawnSettings.Builder mobSpawnInfo = new MobSpawnSettings.Builder();
-		mobSpawnInfo.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(KoskosModModEntities.HAMPTER.get(), 44, 4, 4));
+		mobSpawnInfo.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(KoskosModModEntities.HAMPTER.get(), 5, 4, 4));
 		return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.5f).downfall(0.5f).specialEffects(effects)
 				.mobSpawnSettings(mobSpawnInfo.build()).generationSettings(biomeGenerationSettings.build()).build();
 	}

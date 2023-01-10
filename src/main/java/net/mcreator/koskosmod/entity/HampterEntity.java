@@ -6,14 +6,11 @@ import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.common.DungeonHooks;
 
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
@@ -23,7 +20,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
@@ -37,9 +34,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.Packet;
 
 import net.mcreator.koskosmod.procedures.OnHampterTradeStartProcedure;
+import net.mcreator.koskosmod.procedures.HampterEntityDiesProcedure;
 import net.mcreator.koskosmod.init.KoskosModModEntities;
 
-public class HampterEntity extends Monster {
+public class HampterEntity extends PathfinderMob {
 	public HampterEntity(PlayMessages.SpawnEntity packet, Level world) {
 		this(KoskosModModEntities.HAMPTER.get(), world);
 	}
@@ -95,6 +93,12 @@ public class HampterEntity extends Monster {
 	}
 
 	@Override
+	public void die(DamageSource source) {
+		super.die(source);
+		HampterEntityDiesProcedure.execute(this.level, this.getX(), this.getY(), this.getZ());
+	}
+
+	@Override
 	public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
 		ItemStack itemstack = sourceentity.getItemInHand(hand);
 		InteractionResult retval = InteractionResult.sidedSuccess(this.level.isClientSide());
@@ -110,9 +114,6 @@ public class HampterEntity extends Monster {
 	}
 
 	public static void init() {
-		SpawnPlacements.register(KoskosModModEntities.HAMPTER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				(entityType, world, reason, pos,
-						random) -> (world.getBlockState(pos.below()).getMaterial() == Material.GRASS && world.getRawBrightness(pos, 0) > 8));
 		DungeonHooks.addDungeonMob(KoskosModModEntities.HAMPTER.get(), 180);
 	}
 

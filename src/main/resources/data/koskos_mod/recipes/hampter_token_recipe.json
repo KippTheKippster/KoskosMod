@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "koskos_mod:hampter_fragment"
+    },
+    {
+      "item": "koskos_mod:hampter_fragment"
+    },
+    {
+      "item": "koskos_mod:hampter_fragment"
+    },
+    {
+      "item": "koskos_mod:hampter_fragment"
+    }
+  ],
+  "result": {
+    "item": "koskos_mod:hampter_token",
+    "count": 1
+  }
+}

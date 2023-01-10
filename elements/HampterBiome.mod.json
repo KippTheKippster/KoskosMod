@@ -4,13 +4,25 @@
   "definition": {
     "name": "Hampter Biome",
     "groundBlock": {
-      "value": "Blocks.CANDLE_CAKE#3"
+      "value": "Blocks.GRASS"
     },
     "undergroundBlock": {
-      "value": "Blocks.STONE#0"
+      "value": "Blocks.DIRT#0"
     },
     "underwaterBlock": {
-      "value": "Blocks.CAKE"
+      "value": "Blocks.CLAY"
+    },
+    "grassColor": {
+      "value": -3355393,
+      "falpha": 0.0
+    },
+    "foliageColor": {
+      "value": -3355393,
+      "falpha": 0.0
+    },
+    "waterColor": {
+      "value": -13057,
+      "falpha": 0.0
     },
     "ambientSound": {
       "value": ""
@@ -32,8 +44,8 @@
     "particlesProbability": 0.5,
     "rainingPossibility": 0.5,
     "temperature": 0.5,
-    "baseHeight": 0.6,
-    "heightVariation": 1.0,
+    "baseHeight": 1.0,
+    "heightVariation": 2.0,
     "spawnBiome": true,
     "spawnBiomeNether": true,
     "spawnInCaves": true,
@@ -63,26 +75,26 @@
     "treeFruits": {
       "value": ""
     },
-    "spawnStronghold": true,
-    "spawnMineshaft": true,
-    "spawnMineshaftMesa": true,
-    "spawnPillagerOutpost": true,
-    "villageType": "taiga",
-    "spawnWoodlandMansion": true,
-    "spawnJungleTemple": true,
+    "spawnStronghold": false,
+    "spawnMineshaft": false,
+    "spawnMineshaftMesa": false,
+    "spawnPillagerOutpost": false,
+    "villageType": "none",
+    "spawnWoodlandMansion": false,
+    "spawnJungleTemple": false,
     "spawnDesertPyramid": false,
-    "spawnSwampHut": true,
-    "spawnIgloo": true,
-    "spawnOceanMonument": true,
-    "spawnShipwreck": true,
+    "spawnSwampHut": false,
+    "spawnIgloo": false,
+    "spawnOceanMonument": false,
+    "spawnShipwreck": false,
     "spawnShipwreckBeached": true,
-    "spawnBuriedTreasure": true,
-    "oceanRuinType": "WARM",
-    "spawnNetherBridge": true,
-    "spawnNetherFossil": true,
-    "spawnBastionRemnant": true,
-    "spawnEndCity": true,
-    "spawnRuinedPortal": "JUNGLE",
+    "spawnBuriedTreasure": false,
+    "oceanRuinType": "NONE",
+    "spawnNetherBridge": false,
+    "spawnNetherFossil": false,
+    "spawnBastionRemnant": false,
+    "spawnEndCity": false,
+    "spawnRuinedPortal": "SWAMP",
     "defaultFeatures": [
       "Caves",
       "Ores",
@@ -95,8 +107,8 @@
         },
         "minGroup": 4,
         "maxGroup": 4,
-        "weight": 44,
-        "spawnType": "ambient"
+        "weight": 5,
+        "spawnType": "creature"
       }
     ]
   }

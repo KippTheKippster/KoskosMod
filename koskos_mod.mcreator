@@ -6,7 +6,8 @@
       "sortid": 1,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "hampter"
+      "registry_name": "hampter",
+      "path": "~/HampterEntity"
     },
     {
       "name": "OnHampterTradeStart",
@@ -38,7 +39,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/HampterEntity/HampterTrade"
     },
     {
       "name": "HampterTradeGUI",
@@ -46,7 +48,8 @@
       "sortid": 2,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "hampter_trade_gui"
+      "registry_name": "hampter_trade_gui",
+      "path": "~/HampterEntity/HampterTrade"
     },
     {
       "name": "HampterTradeLogic",
@@ -62,7 +65,8 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/HampterEntity/HampterTrade"
     },
     {
       "name": "HampterBiome",
@@ -91,7 +95,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/HampterEntity"
     },
     {
       "name": "OnHampterTradeSlot1Pickup",
@@ -105,13 +110,10 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/HampterEntity/HampterTrade"
     },
     {
       "name": "OnHampterTradeSlot0Changed",
@@ -125,13 +127,10 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/HampterEntity/HampterTrade"
     },
     {
       "name": "HampterTradeGUIWhileOpenTick",
@@ -147,7 +146,69 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/HampterEntity/HampterTrade"
+    },
+    {
+      "name": "HampterFragment",
+      "type": "item",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hampter_fragment"
+    },
+    {
+      "name": "KoskosModTab",
+      "type": "tab",
+      "sortid": 10,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "koskos_mod_tab"
+    },
+    {
+      "name": "HampterToken",
+      "type": "item",
+      "sortid": 11,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hampter_token"
+    },
+    {
+      "name": "HampterTokenRecipe",
+      "type": "recipe",
+      "sortid": 12,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hampter_token_recipe"
+    },
+    {
+      "name": "HampterEntityDies",
+      "type": "procedure",
+      "sortid": 13,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hampter_entity_dies",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/HampterEntity"
     }
   ],
   "variable_elements": [],
@@ -157,14 +218,27 @@
       "entity.kipps_mod.hampter": "Hampter",
       "biome.kipps_mod.hampter_biome": "Hampter Biome",
       "entity.koskos_mod.hampter": "Hampter",
+      "item.koskos_mod.hampter_fragment": "Hampter Fragment",
       "item.koskos_mod.hampter_spawn_egg": "Hampter Spawn Egg",
       "biome.koskos_mod.hampter_biome": "Hampter Biome",
-      "item.kipps_mod.hampter_spawn_egg": "Hampter Spawn Egg"
+      "item.koskos_mod.hampter_token": "Hampter Token",
+      "item.kipps_mod.hampter_spawn_egg": "Hampter Spawn Egg",
+      "itemGroup.tabkoskos_mod_tab": "Koskos Mod Tab"
     }
   },
   "foldersRoot": {
     "name": "~",
-    "children": []
+    "children": [
+      {
+        "name": "HampterEntity",
+        "children": [
+          {
+            "name": "HampterTrade",
+            "children": []
+          }
+        ]
+      }
+    ]
   },
   "workspaceSettings": {
     "modid": "koskos_mod",

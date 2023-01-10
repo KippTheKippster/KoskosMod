@@ -256,7 +256,7 @@ public class HampterTradeGUIMenu extends AbstractContainerMenu implements Suppli
 			double x = entity.getX();
 			double y = entity.getY();
 			double z = entity.getZ();
-			OnHampterTradeSlot0ChangedProcedure.execute(world, entity);
+			OnHampterTradeSlot0ChangedProcedure.execute(entity);
 		}
 	}
 }

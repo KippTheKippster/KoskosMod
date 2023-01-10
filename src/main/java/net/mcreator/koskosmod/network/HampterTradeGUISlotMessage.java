@@ -73,11 +73,11 @@ public class HampterTradeGUISlotMessage {
 			return;
 		if (slotID == 0 && changeType == 0) {
 
-			OnHampterTradeSlot0ChangedProcedure.execute(world, entity);
+			OnHampterTradeSlot0ChangedProcedure.execute(entity);
 		}
 		if (slotID == 1 && changeType == 1) {
 
-			OnHampterTradeSlot1PickupProcedure.execute(world, entity);
+			OnHampterTradeSlot1PickupProcedure.execute(entity);
 		}
 	}
 

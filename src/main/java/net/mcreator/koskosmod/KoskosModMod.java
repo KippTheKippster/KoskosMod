@@ -29,6 +29,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 
+import net.mcreator.koskosmod.init.KoskosModModTabs;
 import net.mcreator.koskosmod.init.KoskosModModMenus;
 import net.mcreator.koskosmod.init.KoskosModModItems;
 import net.mcreator.koskosmod.init.KoskosModModEntities;
@@ -48,7 +49,7 @@ public class KoskosModMod {
 
 	public KoskosModMod() {
 		MinecraftForge.EVENT_BUS.register(this);
-
+		KoskosModModTabs.load();
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		KoskosModModItems.REGISTRY.register(bus);

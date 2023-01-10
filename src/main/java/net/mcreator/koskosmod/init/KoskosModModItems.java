@@ -12,10 +12,14 @@ import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.CreativeModeTab;
 
+import net.mcreator.koskosmod.item.HampterTokenItem;
+import net.mcreator.koskosmod.item.HampterFragmentItem;
 import net.mcreator.koskosmod.KoskosModMod;
 
 public class KoskosModModItems {
 	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, KoskosModMod.MODID);
 	public static final RegistryObject<Item> HAMPTER = REGISTRY.register("hampter_spawn_egg",
 			() -> new ForgeSpawnEggItem(KoskosModModEntities.HAMPTER, -6710887, -10066330, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+	public static final RegistryObject<Item> HAMPTER_FRAGMENT = REGISTRY.register("hampter_fragment", () -> new HampterFragmentItem());
+	public static final RegistryObject<Item> HAMPTER_TOKEN = REGISTRY.register("hampter_token", () -> new HampterTokenItem());
 }

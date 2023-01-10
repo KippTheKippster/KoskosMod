@@ -1,0 +1,11 @@
+{
+  "_fv": 34,
+  "_type": "tab",
+  "definition": {
+    "name": "Koskos Mod Tab",
+    "icon": {
+      "value": "CUSTOM:HampterFragment"
+    },
+    "showSearch": false
+  }
+}
